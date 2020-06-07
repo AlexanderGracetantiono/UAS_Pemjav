@@ -1,0 +1,172 @@
+<div th:fragment="cssAdm">
+    <link rel="stylesheet" th:href="@{/dist/css/bootstrap.min.css}">
+    <link th:href="@{/dist/css/icons.css}" rel="stylesheet" type="text/css" />
+    <link th:href="@{/dist/css/styleAdm.css}" rel="stylesheet" type="text/css" />
+</div>
+
+<div th:fragment="headerAdm">
+    <!-- Navigation Bar-->
+    <header id="topnav">
+        <div class="topbar-main">
+            <div class="container-fluid">
+
+                <!-- Logo container-->
+                <div class="logo">
+                    <!-- Text Logo -->
+                    <a th:href="@{/homeAdm}" class="logo">
+                        <img width="30px" alt=""> HRIS
+                    </a>
+                </div>
+                <!-- End Logo container-->
+
+
+                <div class="menu-extras topbar-custom">
+
+                    <ul class="list-inline float-right mb-0">
+
+                        <!-- notification-->
+                        <li class="list-inline-item dropdown notification-list">
+                            <a class="nav-link dropdown-toggle arrow-none waves-effect" data-toggle="dropdown"
+                               href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                <i class="ti-bell noti-icon"></i>
+                                <span class="badge badge-info badge-pill noti-icon-badge">3</span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-menu-lg">
+                                <!-- item-->
+                                <div class="dropdown-item noti-title">
+                                    <h5>Notification (3)</h5>
+                                </div>
+
+                                <!-- item-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    <div class="notify-icon bg-warning"><i class="mdi mdi-message"></i></div>
+                                    <p class="notify-details"><b>New Message received</b><small
+                                            class="text-muted">You have 1 unread messages</small></p>
+                                </a>
+
+                                <!-- All-->
+                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                    View All
+                                </a>
+
+                            </div>
+                        </li>
+                        <!-- User-->
+                        <li class="list-inline-item dropdown notification-list">
+                            <a class="nav-link dropdown-toggle arrow-none waves-effect nav-user"
+                               data-toggle="dropdown" href="#" role="button" aria-haspopup="false"
+                               aria-expanded="false">
+                                <img th:src="@{/dist/img/users/avatar-1.jpg}" alt="user" class="rounded-circle">
+                                <span class="ml-1" id="username">Username <i class="mdi mdi-chevron-down"></i> </span>
+                                <input type="hidden" id="idUser">
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+                                <a class="dropdown-item" href="#"><i class="dripicons-user text-muted"></i>
+                                    Profile</a>
+                                <a class="dropdown-item" href="#"><i
+                                        class="dripicons-gear text-muted"></i> Settings</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" th:href="@{/logout}"><i class="dripicons-exit text-muted"></i>
+                                    Logout</a>
+                            </div>
+                        </li>
+                        <li class="menu-item list-inline-item">
+                            <!-- Mobile menu toggle-->
+                            <a class="navbar-toggle nav-link">
+                                <div class="lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                            <!-- End mobile menu toggle-->
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- end menu-extras -->
+
+                <div class="clearfix"></div>
+
+            </div> <!-- end container -->
+        </div>
+        <!-- end topbar-main -->
+
+        <!-- MENU Start -->
+        <div class="navbar-custom">
+            <div class="container-fluid">
+                <div id="navigation">
+                    <!-- Navigation Menu-->
+                    <ul class="navigation-menu">
+
+                        <li class="has-submenu">
+                            <a th:href="@{/homeAdm}"><i class="dripicons-device-desktop"></i>Home</a>
+                        </li>
+
+                        <li class="has-submenu">
+                            <a href="#"><i class="dripicons-suitcase"></i>Leave <i
+                                    class="mdi mdi-chevron-down mdi-drop"></i></a>
+                            <ul class="submenu megamenu">
+                                <li>
+                                    <ul>
+                                        <li>
+                                            <a href="#">Executive Summary</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{'/approvalRm/' + ${email}}">Employee Leave Request</a>
+                                        </li>
+                                        <li>
+                                            <a th:href="@{/leaveHistoryAdm}">Employee Leave History</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="has-submenu">
+                            <a href="#"><i class="dripicons-to-do"></i>Overtime <i
+                                    class="mdi mdi-chevron-down mdi-drop"></i></a>
+                            <ul class="submenu">
+                                <li>
+                                    <a href="#">Executive Summary</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/dataCustomer}">Data Customer</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#"><i class="dripicons-to-do"></i>Document Request <i
+                                    class="mdi mdi-chevron-down mdi-drop"></i></a>
+                            <ul class="submenu">
+                                <li>
+                                    <a th:href="@{/DocumentApproveAdm}">Document Request Approval</a>
+                                </li>
+                                <li>
+                                    <a th:href="@{/DocumentReq}">Document Request Summary</a>
+                                    
+                                </li>
+                                </ul>
+                        </li>
+                          <!--Parking reimbursement Navigation Bar-->
+                        <li class="has-submenu">
+                            <a href="#"><i class="dripicons-to-do"></i>Parking Reimbursement <i
+                                    class="mdi mdi-chevron-down mdi-drop"></i></a>
+                            <ul class="submenu">
+                                <li>
+                                    <a th:href="@{/parking/summary}">Summary</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!--end parking reimbursement navigation bar-->
+                        <li>
+                            <a href="help.html">Help</a>
+                        </li>
+                    </ul>
+                    <!-- End navigation menu -->
+                </div> <!-- end #navigation -->
+            </div> <!-- end container -->
+        </div> <!-- end navbar-custom -->
+    </header>
+    <!-- End Navigation Bar-->
+</div>

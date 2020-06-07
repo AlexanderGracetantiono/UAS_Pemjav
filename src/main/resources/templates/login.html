@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WEB-UAS-LOGIN</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- App Icons -->
+        <link rel="shortcut icon" th:href="@{/dist/img/favicon.ico}">
+
+        <link rel="stylesheet" th:href="@{/dist/css/bootstrap.min.css}">
+        <link th:href="@{/dist/css/icons.css}" rel="stylesheet" type="text/css" />
+        <link th:href="@{/dist/css/style.css}" rel="stylesheet" type="text/css" />
+
+        <link href="https://fonts.googleapis.com/css?family=Chelsea+Market&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <!-- Loader -->
+        <div id="preloader">
+            <div id="status">
+                <div class="spinner"></div>
+            </div>
+        </div>
+
+        <!-- Begin page -->
+        <div class="accountbg"></div>
+        <div class="wrapper-page">
+
+            <div class="card">
+                <div class="card-body">
+
+                    <h3 class="text-center m-0">
+                        <a href="home.html" class="logo logo-admin"><img th:src="@{/dist/img/mii.png}" height="50" alt="logo"> Web UAS</a>
+                    </h3>
+
+                    <div class="p-3">
+                        <h4 class="text-muted font-18 m-b-5 text-center">Welcome Back !</h4>
+                        <p class="text-muted text-center">Sign in to continue to Web.</p>
+
+                        <form class="form-horizontal m-t-30" th:action="@{/loginpage}" method="POST">
+
+                            <div class="form-group">
+                                <label for="username">Email</label>
+                                <input type="text" class="form-control" name="username" id="username" placeholder="Enter email">
+                            </div>
+                            <div class="form-group">
+                                <label for="userpassword">Password</label>
+                                <input type="password" class="form-control" name="password" id="userpassword" placeholder="Enter password">
+                            </div>
+
+                            <div class="form-group row m-t-20">
+                                <div class="col-sm-6">
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="customControlInline">
+                                        <label class="custom-control-label" for="customControlInline">Remember me</label>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 text-right">
+                                    <button class="btn btn-primary w-md waves-effect waves-light" type="submit">Log
+                                        In</button>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="m-t-40 text-center">
+                <p> © 2020 Alexander, Siddharta. All Rights Reserved.</p>
+            </div>
+
+        </div>
+        <script src="https://unpkg.com/@popperjs/core@2.0.0"></script>
+        <script th:src="@{/dist/js/jquery.min.js}"></script>
+        <script th:src="@{/dist/js/bootstrap.bundle.min.js}"></script>
+        <script th:src="@{/dist/js/modernizr.min.js}"></script>
+        <script th:src="@{/dist/js/waves.js}"></script>
+        <script th:src="@{/dist/js/jquery.slimscroll.js}"></script>
+        <script th:src="@{/dist/js/jquery.nicescroll.js}"></script>
+        <script th:src="@{/dist/js/jquery.scrollTo.min.js}"></script>
+
+        <!-- App js -->
+        <script th:src="@{/dist/js/app.js}"></script>
+    </body>
+</html>

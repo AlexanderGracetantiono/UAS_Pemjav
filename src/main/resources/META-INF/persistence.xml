@@ -8,6 +8,9 @@
     <class>latihanSpringBoot.latihanSpringBoot.enitity.Jobs</class>
     <class>latihanSpringBoot.latihanSpringBoot.enitity.Departments</class>
     <class>latihanSpringBoot.latihanSpringBoot.enitity.Countries</class>
+    <class>latihanSpringBoot.latihanSpringBoot.enitity.TbLogin</class>
+    <class>latihanSpringBoot.latihanSpringBoot.enitity.TbMhs</class>
+    <class>latihanSpringBoot.latihanSpringBoot.enitity.TbNilai</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/hr?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

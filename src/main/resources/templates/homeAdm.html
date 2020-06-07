@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>HRIS - Home</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- App Icons -->
+        <link rel="shortcut icon" th:href="@{/dist/img/favicon.ico}">
+
+       <div th:replace="fragments/headerAdm::cssAdm"></div>
+</head>
+<body>
+    <!-- Loader -->
+    <div id="preloader">
+        <div id="status">
+            <div class="spinner"></div>
+        </div>
+    </div>
+
+    <div class="header-bg">
+
+         <div th:replace="fragments/headerAdm::headerAdm"></div>
+
+        <div class="container-fluid">
+            <!-- Page-Title -->
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-title-box">
+                        <form class="float-right app-search">
+                            <input type="text" placeholder="Search..." class="form-control">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                        <h4 class="page-title"> <i class="dripicons-blog"></i> Home</h4>
+                    </div>
+                </div>
+            </div>
+            <!-- end page title end breadcrumb -->
+
+        </div>
+    </div>
+
+
+    <div class="wrapper">
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-6 col-lg-6 col-xl-3">
+
+                    <!-- Simple card -->
+                    <div class="card m-b-30">
+                        <img class="card-img-top img-fluid" th:src="@{/dist/img/small/img-1.jpg}" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title font-20 mt-0">Leave Request</h4>
+                            <p class="card-text">Some quick example text to build on the card title and make
+                                up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+
+                </div><!-- end col -->
+
+                <div class="col-md-6 col-lg-6 col-xl-3">
+
+                    <!-- Simple card -->
+                    <div class="card m-b-30">
+                        <img class="card-img-top img-fluid" th:src="@{/dist/img/small/img-1.jpg}" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title font-20 mt-0">Overtime</h4>
+                            <p class="card-text">Some quick example text to build on the card title and make
+                                up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+
+                </div><!-- end col -->
+
+                <div class="col-md-6 col-lg-6 col-xl-3">
+
+                    <!-- Simple card -->
+                    <div class="card m-b-30">
+                        <img class="card-img-top img-fluid" th:src="@{/dist/img/small/img-1.jpg}" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title font-20 mt-0">Profile</h4>
+                            <p class="card-text">Some quick example text to build on the card title and make
+                                up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+
+                </div><!-- end col -->
+
+                <div class="col-md-6 col-lg-6 col-xl-3">
+
+                    <!-- Simple card -->
+                    <div class="card m-b-30">
+                        <img class="card-img-top img-fluid" th:src="@{/dist/img/small/img-1.jpg}" alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title font-20 mt-0">Card title</h4>
+                            <p class="card-text">Some quick example text to build on the card title and make
+                                up the bulk of the card's content.</p>
+                        </div>
+                    </div>
+
+                </div><!-- end col -->
+
+
+            </div>
+        </div> <!-- end container -->
+    </div>
+    <!-- end wrapper -->
+
+
+    <!-- Footer -->
+    <div th:replace="fragments/footerAdm::footerAdm"></div>
+    <!-- End Footer -->
+
+    <div th:replace="fragments/footerAdm::js"></div>
+    <script th:src="@{/dist/js/session.js}"></script>  
+
+    <!-- App js -->
+    <script th:src="@{/dist/js/app.js}"></script>
+</body>
+</html>
