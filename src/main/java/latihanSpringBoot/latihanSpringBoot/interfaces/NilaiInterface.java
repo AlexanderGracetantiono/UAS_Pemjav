@@ -16,4 +16,6 @@ public interface NilaiInterface {
     
     void saveNilaiAkhir(TbNilai tbNilai);
     void saveUTS(int nilai,String id);
+    List<Object[]> getListNilai();
+    void DeleteNilai(int id);
 }

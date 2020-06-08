@@ -7,9 +7,11 @@ package latihanSpringBoot.latihanSpringBoot.repository;
 
 import java.util.List;
 import latihanSpringBoot.latihanSpringBoot.enitity.TbMhs;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
@@ -18,7 +20,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MahasiswaRepo extends CrudRepository<TbMhs, Integer> {
 
-    @Query(value = "SELECT * FROM `tb_mhs` ", nativeQuery = true)
+    @Query(value = "SELECT * FROM `tb_mhs` WHERE `is_deleted`= 0 ", nativeQuery = true)
     public List<Object[]> listMHS();
 
     @Query(value = "SELECT COUNT(*) FROM `tb_mhs`  ", nativeQuery = true)
@@ -26,4 +28,12 @@ public interface MahasiswaRepo extends CrudRepository<TbMhs, Integer> {
 
     @Query(value = "SELECT * FROM `tb_mhs` WHERE `id`=? ", nativeQuery = true)
     public List<Object[]> getMHSBYID(int id);
+    
+    @Query(value = "SELECT * FROM `tb_mhs` WHERE `nama` LIKE %?% AND `is_deleted`=0", nativeQuery = true)
+    public List<Object[]> getMHSbyName(String name);
+    
+    @Modifying(flushAutomatically = true)
+    @Query(value = "UPDATE `tb_mhs` SET `is_deleted` = 1 WHERE `id` =? ", nativeQuery = true)
+    @Transactional
+    public void DeleteMHS(String id);
 }

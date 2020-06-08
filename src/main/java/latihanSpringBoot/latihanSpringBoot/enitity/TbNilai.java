@@ -29,12 +29,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "TbNilai.findAll", query = "SELECT t FROM TbNilai t")
     , @NamedQuery(name = "TbNilai.findById", query = "SELECT t FROM TbNilai t WHERE t.id = :id")
+    , @NamedQuery(name = "TbNilai.findByMatkul", query = "SELECT t FROM TbNilai t WHERE t.matkul = :matkul")
     , @NamedQuery(name = "TbNilai.findByNik", query = "SELECT t FROM TbNilai t WHERE t.nik = :nik")
+    , @NamedQuery(name = "TbNilai.findByNama", query = "SELECT t FROM TbNilai t WHERE t.nama = :nama")
     , @NamedQuery(name = "TbNilai.findByUas", query = "SELECT t FROM TbNilai t WHERE t.uas = :uas")
     , @NamedQuery(name = "TbNilai.findByUts", query = "SELECT t FROM TbNilai t WHERE t.uts = :uts")
     , @NamedQuery(name = "TbNilai.findByHarian", query = "SELECT t FROM TbNilai t WHERE t.harian = :harian")
     , @NamedQuery(name = "TbNilai.findByRerata", query = "SELECT t FROM TbNilai t WHERE t.rerata = :rerata")
-    , @NamedQuery(name = "TbNilai.findByGrade", query = "SELECT t FROM TbNilai t WHERE t.grade = :grade")})
+    , @NamedQuery(name = "TbNilai.findByGrade", query = "SELECT t FROM TbNilai t WHERE t.grade = :grade")
+    , @NamedQuery(name = "TbNilai.findByIsDeleted", query = "SELECT t FROM TbNilai t WHERE t.isDeleted = :isDeleted")})
 public class TbNilai implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,8 +49,18 @@ public class TbNilai implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
+    @Column(name = "matkul")
+    private String matkul;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
     @Column(name = "nik")
     private String nik;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 50)
+    @Column(name = "nama")
+    private String nama;
     @Basic(optional = false)
     @NotNull
     @Column(name = "uas")
@@ -69,6 +82,8 @@ public class TbNilai implements Serializable {
     @Size(min = 1, max = 2)
     @Column(name = "grade")
     private String grade;
+    @Column(name = "is_deleted")
+    private Boolean isDeleted;
 
     public TbNilai() {
     }
@@ -77,25 +92,28 @@ public class TbNilai implements Serializable {
         this.id = id;
     }
 
-    public TbNilai(String nik, int uas, int uts, int harian, int rerata, String grade) {
-        this.nik = nik;
-        this.uas = uas;
-        this.uts = uts;
-        this.harian = harian;
-        this.rerata = rerata;
-        this.grade = grade;
-    }
-
-    public TbNilai(Integer id, String nik, int uas, int uts, int harian, int rerata, String grade) {
+    public TbNilai(Integer id, String matkul, String nik, String nama, int uas, int uts, int harian, int rerata, String grade) {
         this.id = id;
+        this.matkul = matkul;
         this.nik = nik;
+        this.nama = nama;
         this.uas = uas;
         this.uts = uts;
         this.harian = harian;
         this.rerata = rerata;
         this.grade = grade;
     }
-
+  public TbNilai(String matkul, String nik, String nama, int uas, int uts, int harian, int rerata, String grade, Boolean isDeleted) {
+        this.matkul = matkul;
+        this.nik = nik;
+        this.nama = nama;
+        this.uas = uas;
+        this.uts = uts;
+        this.harian = harian;
+        this.rerata = rerata;
+        this.grade = grade;
+        this.isDeleted = isDeleted;
+    }
     public Integer getId() {
         return id;
     }
@@ -104,12 +122,28 @@ public class TbNilai implements Serializable {
         this.id = id;
     }
 
+    public String getMatkul() {
+        return matkul;
+    }
+
+    public void setMatkul(String matkul) {
+        this.matkul = matkul;
+    }
+
     public String getNik() {
         return nik;
     }
 
     public void setNik(String nik) {
         this.nik = nik;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public void setNama(String nama) {
+        this.nama = nama;
     }
 
     public int getUas() {
@@ -150,6 +184,14 @@ public class TbNilai implements Serializable {
 
     public void setGrade(String grade) {
         this.grade = grade;
+    }
+
+    public Boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Boolean isDeleted) {
+        this.isDeleted = isDeleted;
     }
 
     @Override

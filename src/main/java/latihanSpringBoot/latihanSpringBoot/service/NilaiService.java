@@ -34,4 +34,14 @@ public class NilaiService implements NilaiInterface {
     public void saveUTS(int nilai, String id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public List<Object[]> getListNilai() {
+       return nilaiRepo.ListNilai();
+    }
+
+    @Override
+    public void DeleteNilai(int id) {
+        nilaiRepo.DeleteNilai(id);
+    }
 }

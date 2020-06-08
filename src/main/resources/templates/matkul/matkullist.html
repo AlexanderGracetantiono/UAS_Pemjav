@@ -48,7 +48,7 @@
                             <input type="text" placeholder="Search..." class="form-control">
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
-                        <h4 class="page-title"> <i class="dripicons-blog"></i>Daftar Mahasiswa</h4>
+                        <h4 class="page-title"> <i class="dripicons-blog"></i>List Mata Kuliah</h4>
                     </div>
                 </div>
             </div>
@@ -70,29 +70,28 @@
                                 <thead class="text-center">
                                     <tr>
                                         <th class="all">No</th>
-                                        <th class="all">Nama</th>
-                                        <th class="all">NIK</th>
+                                        <th class="all">Mata Kuliah</th>
+                                        <th class="all">Dosen Pengajar</th>
                                         <th class="all">Jurusan</th>
-                                        <th class="all">Tahun Akademik</th>
+                                        <th class="all">Ruangan</th>
                                         <th class="all"><i class="fa fa-cog" aria-hidden="true"></i></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <!--listReimbursement-->
-                                    <tr th:each="dataMHS : ${LISTMHS}">
+                                    <tr th:each="jb : ${DataJB}">
                                         <td class="all"></td>
-                                        <td class="text-center" th:text="${dataMHS[1]}"></td>
-                                        <td class="text-center" th:text="${dataMHS[2]}"></td>
-                                        <td class="text-left" th:text="${dataMHS[3]}"></td>
-                                        <td class="text-center" th:text="${'20'+dataMHS[4]}"></td>
+                                        <td class="text-center" th:text="${jb[1]}"></td>
+                                        <td class="text-center" th:text="${jb[2]}"></td>
+                                        <td class="text-center" th:text="${jb[4]}"></td>
+                                        <td class="text-center" th:text="${jb[3]}"></td>
                                         <td class="text-center">
-                                            <a th:href="|@{/mhs/form/e/}${dataMHS[0]}|" class="btn" style="color:blue" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil-square"></i> </a>
-                                            <a th:data-id="${dataMHS[0]}" class="btn alertDelete" style="color:red" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
+                                            <a th:href="|@{/matkul/form/e/}${jb[0]}|" class="btn" style="color:blue" data-toggle="tooltip" title="Edit"><i class="fa fa-pencil-square"></i> </a>
+                                            <a th:data-id="${jb[0]}" class="btn alertDelete" style="color:red" data-toggle="tooltip" title="Delete"><i class="fa fa-trash-o"></i></a>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-                           
                         </div>
                     </div>
                 </div> <!-- end col -->
@@ -120,7 +119,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
     <script>
         $('.alertDelete').on('click', function () {
-            var id_req = this.getAttribute("data-reqid");
             var id = this.getAttribute("data-id");
             Swal.fire({
                 title: 'Are you sure to delete this data?',
@@ -132,7 +130,7 @@
                 confirmButtonText: 'Yes, Delete This!'
             }).then((result) => {
                 if (result.value) {
-                    location.href = "/mhs/form/d/" + id;
+                    location.href = "/matkul/form/d/" + id;
                 }
             });
         });

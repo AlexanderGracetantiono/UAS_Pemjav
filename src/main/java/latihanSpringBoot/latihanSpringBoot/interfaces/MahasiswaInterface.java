@@ -15,6 +15,8 @@ public interface MahasiswaInterface {
     
     List<Object[]> listMHS();
     List<Object[]> getMHSBYID(int id);
+    List<Object[]> getMHSbyName(String name);
     void saveMHS(TbMhs tbmhs);
+    void DeleteMHS(String id);
     int countMHS();
 }

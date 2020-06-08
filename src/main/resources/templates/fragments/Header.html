@@ -108,7 +108,7 @@
                             <ul class="submenu megamenu">
                                 <li>
                                     <ul>
-                                        <li class="active"><a th:href="@{'/mhs/form'}">Form MHS</a></li>
+                                        <li><a th:href="@{'/mhs/form'}">Form MHS</a></li>
                                     </ul>
                                     <ul>
                                         <li><a th:href="@{'/mhs/list'}">Data MHS</a></li>
@@ -122,7 +122,7 @@
                             <ul class="submenu megamenu">
                                 <li>
                                     <ul>
-                                        <li class="active"><a th:href="@{'/nilai/form'}">Form Nilai</a></li>
+                                        <li><a th:href="@{'/nilai/form'}">Form Nilai</a></li>
                                     </ul>
                                     <ul>
                                         <li><a th:href="@{'/nilai/list'}">List Grade</a></li>
@@ -130,7 +130,61 @@
                                 </li>
                             </ul>
                         </li>
-                        
+                        <li class="has-submenu">
+                            <a href="#"><i class="dripicons-suitcase"></i>Matakuliah <i
+                                    class="mdi mdi-chevron-down mdi-drop"></i></a>
+                            <ul class="submenu megamenu">
+                                <li>
+                                    <ul>
+                                        <li><a th:href="@{'/matkul/form'}">Form Matakuliah</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a th:href="@{'/matkul/list'}">List Matakuliah</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#"><i class="dripicons-suitcase"></i>Ruangan <i
+                                    class="mdi mdi-chevron-down mdi-drop"></i></a>
+                            <ul class="submenu megamenu">
+                                <li>
+                                    <ul>
+                                        <li><a th:href="@{'/ruang/form'}">Form Ruangan</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a th:href="@{'/ruang/list'}">List Ruangan</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#"><i class="dripicons-suitcase"></i>Lainnya <i
+                                    class="mdi mdi-chevron-down mdi-drop"></i></a>
+                            <ul class="submenu megamenu">
+                                <li>
+                                    <ul>
+                                        <li><a th:href="@{'/jurusan/form'}">Form Jurusan</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a th:href="@{'/jabatan/form'}">Form Jabatan</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a th:href="@{'/staff/form'}">Form Staff</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a th:href="@{'/jabatan/list'}">List Jabatan</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a th:href="@{'/staff/list'}">List Staff</a></li>
+                                    </ul>
+                                    <ul>
+                                        <li><a th:href="@{'/jurusan/list'}">List Jurusan</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
                         <li>
                             <a href="help.html">Help</a>
                         </li>

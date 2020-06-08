@@ -41,4 +41,14 @@ public class MahasiswaService implements MahasiswaInterface {
     public List<Object[]> getMHSBYID(int id) {
         return mhsRepo.getMHSBYID(id);
     }
+
+    @Override
+    public List<Object[]> getMHSbyName(String name) {
+       return mhsRepo.getMHSbyName(name);
+    }
+
+    @Override
+    public void DeleteMHS(String id) {
+         mhsRepo.DeleteMHS(id);
+    }
 }

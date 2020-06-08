@@ -7,7 +7,7 @@
 
         <!-- App Icons -->
         <link rel="shortcut icon" th:href="@{/dist/img/favicon.ico}">
-        <link th:href="@{/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css}" rel="stylesheet" type="text/css" />
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <div th:replace="fragments/header::css"></div>
 </head>
 <body>
@@ -49,7 +49,6 @@
                 <div class="col-12">
                     <div class="card m-b-20">
                         <div class="card-body" style="padding-left: 100px; padding-right: 100px;">
-                            <h4 class="text-center">Formulir Pengajuan Claim Parkir</h4>
                             <br>
                             <div class="card">
                                 <div class="card-header" th:if="${DataMHS!=null}"><b>Data Asli</b></div>
@@ -96,8 +95,10 @@
                                             <div class="col-md-4 input-group">
                                                 <input  th:if="${DataMHS!=null}" th:value="${DataMHS[1]}" class="form-control periode" type="text" id="namaMHS" name="namaMHS">
                                                 <input  th:unless="${DataMHS!=null}"  class="form-control periode" type="text" id="namaMHS" name="namaMHS">
-                                                <input th:if="${DataMHS!=null}" th:value="${DataMHS[0]}" class="form-control periode" type="text" id="id_mhs" name="id_mhs" hidden="">
-                                                <input th:unless="${DataMHS!=null}" value="0" class="form-control periode" type="text" id="id_mhs" name="id_mhs" hidden="">
+                                                <input th:if="${DataMHS!=null}" th:value="${DataMHS[0]}" class="form-control periode" type="text" id="id_mhs" name="id_mhs" hidden="" >
+                                                <input th:unless="${DataMHS!=null}" value="0" class="form-control periode" type="text" id="id_mhs" name="id_mhs"  hidden="">
+                                                <input th:if="${DataMHS!=null}" th:value="${DataMHS[2]}" class="form-control periode" type="text" id="nik_mhs" name="nik_mhs"  hidden="">
+                                                <input th:unless="${DataMHS!=null}" value="0" class="form-control periode" type="text" id="nik_mhs" name="nik_mhs"  hidden="">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text"><i class="fa fa-user-circle"></i></span>
                                                 </div>
@@ -109,8 +110,8 @@
                                             <span class="float-right col-form-label">:</span>
                                             <div class="col-md-4 input-group">
                                                 <select class="form-control" id="tahunMHS" name="tahunMHS" >
-                                                    <!--<option th:if="${DataMHS!=null}" th:value="${DataMHS[4]}" selected="" disabled=""  th:text="${'20'+DataMHS[4]}" ></option>-->
-                                                    <option value="" selected="" disabled="">Pilih Tahun Akademik</option>
+                                                    <option th:if="${DataMHS!=null}" th:value="${DataMHS[4]}" selected="" th:text="${'20'+DataMHS[4]}" ></option>
+                                                    <option th:unless="${DataMHS!=null}" value="" selected="" disabled="">Pilih Tahun Akademik</option>
                                                     <option value="17">2017</option>
                                                     <option value="18">2018</option> 
                                                     <option value="19">2019</option> 
@@ -120,19 +121,17 @@
                                         </div>
                                         <!--jurusan mhs-->
                                         <div class="form-group row">
-                                            <label for="example-text-input" class="col-md-2 col-form-label">Jurusan Mahasiswa</label>
-                                            <span class="float-right col-form-label">:</span>
-                                            <div class="col-md-4 input-group">
-                                                <select  class="form-control" id="jurusanMHS" name="jurusanMHS" >
-                                                    <!--<option th:if="${DataMHS!=null}" th:value="${DataMHS[3]}" th:text="${DataMHS[3]}" selected="" disabled=""></option>-->
-                                                    <option  value="" selected="" disabled="">Pilih Jurusan</option>
-                                                    <option value="Teknologi Informasi">Teknologi Informasi</option>
-                                                    <option value="Sistem Informasi">Sistem Informasi</option> 
-                                                    <option value="Akuntansi">Akuntansi</option> 
-                                                    <option value="Management">Management</option> 
-                                                </select>
+                                                <label for="example-text-input" class="col-md-2 col-form-label">Jurusan</label>
+                                                <span class="float-right col-form-label">:</span>
+                                                <div class="col-md-4 input-group">
+                                                    <input th:if="${DataMHS != null}" th:value="${DataMHS[3]}"  class="form-control" id="jurusanMHS" name="jurusanMHS" type="text" >
+                                                    <input th:unless="${DataMHS != null}" class="form-control" id="jurusanMHS" name="jurusanMHS"  type="text" >
+                                                    <input class="form-control" id="jurusanID" name="jurusanID" value="0" type="text"  hidden="">
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text"><i class="fa fa-file"></i></span>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
                                         <div class="text-center" style="margin-top: 40px;">
                                             <!--<button id="alertsave" type="button" class="btn btn-primary w-md waves-effect waves-light">Submit</button>-->
                                             <button type="button" id="alertsave" class="btn btn-info">Add/Save</button>
@@ -161,16 +160,12 @@
 
     <!-- App js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.all.min.js"></script>
     <script>
 
         $('#alertsave').on('click', function () {
             var form = $(this).parents().find('form');
-            var tahun = document.getElementById("tahunMHS")
-            var jurusanMHS = document.getElementById("jurusanMHS")
-            console.log(tahun.value);
-            console.log(jurusanMHS.value);
             Swal.fire({
                 title: 'Are you sure to save this data?',
                 text: "You won't be able to revert this!",
@@ -193,20 +188,12 @@
 
 
     </script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/eonasdan-bootstrap-datetimepicker/3.1.4/js/bootstrap-datetimepicker.min.js"></script>
-
-    <script>
-        jQuery('#periodestart').datepicker({
-            format: "dd-mm-yy",
-            viewMode: "days",
-            minViewMode: "days"
-        });
-    </script>
-    <script>
-        jQuery('#periodeend').datepicker({
-            format: "dd-mm-yy",
-            viewMode: "days",
-            minViewMode: "days"
+     <script>
+        $("#jurusanMHS").autocomplete({
+            source: "getlistjurusan",
+             select: function (event, ui) {
+                document.getElementById("jurusanID").value = ui.item.id;
+            }
         });
     </script>
 </body>
